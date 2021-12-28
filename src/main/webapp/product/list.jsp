@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <style>
 
         body {
@@ -41,15 +42,6 @@
             margin-bottom: 45px;
         }
 
-        .bg-1 {
-            background-color: #1abc9c; /* Green */
-            color: #ffffff;
-        }
-
-        .bg-2 {
-            background-color: #474e5d; /* Dark Blue */
-            color: #ffffff;
-        }
 
         .bg-3 {
             background-color: #ffffff; /* White */
@@ -79,6 +71,16 @@
             letter-spacing: 5px;
 
         }
+
+        #body-img {
+            width: 100%;
+            height: 420px;
+        }
+
+        #body-img:hover {
+            opacity: 0.4;
+        }
+
 
     </style>
 </head>
@@ -115,16 +117,15 @@
     <div class="row">
         <c:forEach items='${requestScope["products"]}' var="product">
             <div class="col-sm-4">
-                <a href="#"> <img src="${product.img}" class="img-responsive margin" style="width:100%; height: 420px"
-                                  alt="Image"> </a>
+
+                <a href="/products?action=view&id=${product.getId()}"> <img src="${product.img}" class="img-responsive margin" alt="Image" id="body-img">
+                </a>
                 <p>${product.id}</p>
                 <p>${product.name}</p>
                 <p>${product.price}</p>
                 <p>${product.producer}</p>
                 <p>${product.description}</p>
-                <a href="/products?action=view&id=${product.getId()}" class="btn btn-info">Detail</a>
                 <a href="/products?action=edit&id=${product.getId()}" class="btn btn-warning">Edit</a>
-
                 <a href="/products?action=delete&id=${product.getId()}" class="btn btn-danger">Delete</a>
                 <br>
             </div>

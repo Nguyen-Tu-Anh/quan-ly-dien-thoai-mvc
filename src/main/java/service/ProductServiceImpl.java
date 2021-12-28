@@ -1,20 +1,14 @@
 package service;
 
+import dao.ProductDao;
 import model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    private static List<Product> products;
+    private static List<Product> products = ProductDao.getAllProduct();
 
-    static {
-        products = new ArrayList<>();
-        products.add(new Product(1, "Iphone 12pro", 1200, "White", "Apple", "img/12prowhite.jpg"));
-        products.add(new Product(2, "Iphone XS", 500, "Gold", "Apple", "img/ipXsGold.jpg"));
-        products.add(new Product(3, "SamSung Z Fold 3", 2000, "Silver", "SamSung", "img/ssZFold3.jpg"));
-        products.add(new Product(4, "Huawei Mate X2", 2200, "BlueSea", "Huawei", "img/huaweiMateX.jpg"));
-    }
 
     @Override
     public List<Product> findAll() {
@@ -23,7 +17,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product product) {
-        products.add(product);
+        ProductDao.saveProduct(product);
+        products = ProductDao.getAllProduct();
     }
 
     @Override
@@ -40,12 +35,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void update(int index, Product product) {
-        products.set(index, product);
+        ProductDao.editProduct(products.get(index).getId(), product);
+        products = ProductDao.getAllProduct();
     }
 
     @Override
     public void delete(int index) {
-        products.remove(index);
+        ProductDao.deleteProduct(products.get(index).getId());
+        products = ProductDao.getAllProduct();
     }
 
     @Override

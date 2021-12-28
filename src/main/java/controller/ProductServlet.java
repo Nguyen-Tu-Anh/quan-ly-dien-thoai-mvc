@@ -69,7 +69,6 @@ public class ProductServlet extends HttpServlet {
     private void listProducts(HttpServletRequest request, HttpServletResponse response) {
         List<Product> products = this.productService.findAll();
         request.setAttribute("products", products);
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/list.jsp");
         try {
             dispatcher.forward(request, response);

@@ -29,7 +29,6 @@
             </thead>
             <tbody>
             <tr>
-
                 <td>${requestScope["product"].getId()}</td>
                 <td>${requestScope["product"].getName()}</td>
                 <td>${requestScope["product"].getPrice()}</td>

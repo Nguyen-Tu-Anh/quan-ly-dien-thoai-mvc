@@ -41,7 +41,6 @@
             </thead>
             <tbody>
             <tr>
-
                 <td><input type="text" placeholder="name" name="name"></td>
             </tr>
             </tbody>
